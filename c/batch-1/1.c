@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int sum(int *arr, size_t len) {
+    int sumA = 0;
+   
+
+    for (size_t i = 0; i < len; i++) {
+        sumA += arr[i];
+    }
+
+    return sumA;
+}
+
 int main(void) {
     int number = 1000;
     int m1 = 3;
@@ -29,7 +40,7 @@ int main(void) {
         }
     }
 
-    
+    size_t len = sizeof(arrM) / sizeof(arrM[0]);
 
    
     free(arr);
