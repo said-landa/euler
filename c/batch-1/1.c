@@ -4,7 +4,6 @@
 int sum(int *arr, size_t len) {
     int sumA = 0;
    
-
     for (size_t i = 0; i < len; i++) {
         sumA += arr[i];
     }
@@ -29,7 +28,7 @@ int main(void) {
 
                 int *temp = realloc(arrM, capacity * sizeof(int));
                 if (temp == NULL) {
-                    free(arr); 
+                    free(arrM); 
                     return 1;
                 }
 
@@ -40,9 +39,10 @@ int main(void) {
         }
     }
 
-    size_t len = sizeof(arrM) / sizeof(arrM[0]);
+    size_t len = sizeof(*arrM) / sizeof(arrM[0]);
+    int res = sum(arrM, len);
+    printf("%d", res);
 
-   
-    free(arr);
+    free(arrM);
     return 0;
 }
