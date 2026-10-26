@@ -15,33 +15,34 @@ int main(void) {
     int number = 1000;
     int m1 = 3;
     int m2 = 5;
-    int capacity = 2;
-    int size = 0;
+    size_t capacity = 2;
+    size_t size = 0;
 
     int *arrM = malloc(capacity * sizeof(int));
     if (arrM == NULL) { return 1;}
 
-    for (int i = 1; i < 1000; i++) {
-        if (i % 3 == 0 || i % 5 == 0) {
+    for (int i = 1; i < number; i++) {
+        if (i % m1 == 0 || i % m2 == 0) {
             if (size == capacity) {
-                capacity *= 2;
+                size_t newCapacity = capacity * 2;
 
-                int *temp = realloc(arrM, capacity * sizeof(int));
+                int *temp = realloc(arrM, newCapacity * sizeof *arrM);
                 if (temp == NULL) {
                     free(arrM); 
                     return 1;
                 }
 
                 arrM = temp;
+                capacity = newCapacity;
             }
 
-            arrM[i - 1] = i;
+            arrM[size] = i;
+            size++;
         }
     }
 
-    size_t len = sizeof(*arrM) / sizeof(arrM[0]);
-    int res = sum(arrM, len);
-    printf("%d", res);
+    int res = sum(arrM, size);
+    printf("%d\n", res);
 
     free(arrM);
     return 0;
