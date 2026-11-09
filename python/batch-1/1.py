@@ -8,4 +8,3 @@ for i in range(1, number):
         sumA += i
              
 print(sumA)
-  
