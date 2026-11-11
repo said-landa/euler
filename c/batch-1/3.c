@@ -4,17 +4,28 @@
 //What is the largest prime factor of the number 600851475143?
 
 #include <stdio.h>
-#include <stdint.h>
+#include <math.h>
+#include <inttypes.h>
 
-int divide()
+int64_t divide(int64_t n, int i) {
+    while (n % i == 0) {
+        n = n / i;
+    }
+    return n;
+}
 
 int main(void) {
     int64_t num = 600851475143;
     int i = 2;
-    int arr[100];
-    size_t len = 0;
 
-
+    while (i <= sqrt((double)num)) {
+        if (num % i == 0) {
+            num = divide(num, i);
+        }
+        i++;
+    }
+    
+    printf("%" PRId64 "\n" , num);
 
     return 0;
 }
